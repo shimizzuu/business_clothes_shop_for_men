@@ -1,6 +1,6 @@
 inherit_from:
   - .rubocop_airbnb.yml
-  
+
 # Rails用に最適化
 Rails:
   Enabled: true
@@ -22,3 +22,4 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
+    - 'spec/spec_helper.rb'
