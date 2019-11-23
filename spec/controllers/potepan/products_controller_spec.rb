@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Potepan::ProductsController, type: :controller do
-
   describe 'GET #show' do
     before do
       @product = create(:product)
@@ -16,5 +15,4 @@ RSpec.describe Potepan::ProductsController, type: :controller do
       expect(response).to render_template :show
     end
   end
-
 end
