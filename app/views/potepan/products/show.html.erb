@@ -1,4 +1,4 @@
-<% provide(:title, 'Single Product') %>
+<% provide(:title, @product.name) %>
 
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
@@ -36,11 +36,7 @@
           </div>
           <div class="media-body">
             <ul class="list-inline">
-              <li>
-                <%= link_to '#' do %>
-                  <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る
-                <% end %>
-              </li>
+              <li><a href="product_grid_left_sidebar.html"><i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a></li>
             </ul>
             <h2><%= @product.name %></h2>
             <h3><%= @product.display_price %></h3>
@@ -62,9 +58,7 @@
               </select>
             </span>
             <div class="btn-area">
-              <%= link_to '#', class="btn btn-primary btn-block" do %>
-                カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i>
-              <% end %>
+              <li><a href="product_grid_left_sidebar.html"><i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a></li>
             </div>
           </div>
         </div>
