@@ -22,7 +22,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -31,5 +30,6 @@
     <%= yield %>
     <%= render 'layouts/footer' %>
     <%= render 'layouts/modal' %>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
