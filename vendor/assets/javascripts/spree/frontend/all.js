@@ -6,9 +6,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-<<<<<<< HEAD
 //= require spree/backend
-=======
-//= require spree/frontend
->>>>>>> 8b37d5c92fbcad32a82dda2f59bf97baabd72f32
 //= require_tree .
