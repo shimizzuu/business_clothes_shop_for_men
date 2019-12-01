@@ -1,0 +1,4 @@
+$('#productsList').html("<%= escape_javascript(render partial: 'products_list',
+                                                locals: { 
+                                                  products: @products,
+                                                  taxon: @taxon }) %>");
