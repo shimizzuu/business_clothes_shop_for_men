@@ -94,12 +94,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-  # JavaScriptをテストするためにCapybaraのドライバにSeleniumを選択できるように設定
-  config.before(:all, selenium: true) do
-    Capybara.current_driver = :selenium
-  end
-
-  config.after(:all, selenium: true) do
-    Capybara.use_default_driver
-  end
 end
