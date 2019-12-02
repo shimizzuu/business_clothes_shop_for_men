@@ -2,4 +2,3 @@ $('#productsList').html("<%= escape_javascript(render partial: 'products_list',
                                              locals: { products: @products }) %>");
 $('.page-title').html("<h2><%= @taxon.name %></h2>");
 $('title').html("<%= @taxon.name %>");
-$('li.active').html("<%= @taxon.name %>");

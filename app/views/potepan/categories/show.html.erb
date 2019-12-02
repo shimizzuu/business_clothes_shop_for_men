@@ -1,5 +1,5 @@
-<% provide(:title, "Categories") %>
-<%= render 'light_section_page_header', page_title: @taxon.name, page_address: @taxon.permalink %>
+<% provide(:title, @taxon.name) %>
+<%= render 'light_section_page_header', page_title: @taxon.name %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix productsContent">
   <div class="container">
