@@ -2,15 +2,15 @@
   <% products.each do |product| %>
     <div class="col-sm-4 col-xs-12">
       <div class="productBox">
-        <div class="productImage clearfix">
-          <%= image_tag product.images.first.attachment.url(:small) %>
-        </div>
-        <div class="productCaption clearfix">
-          <%= link_to potepan_product_path(product.id) do %>
+        <%= link_to potepan_product_path(product.id) do %>
+          <div class="productImage clearfix">
+            <%= image_tag product.display_image.attachment(:product) %>
+          </div>
+          <div class="productCaption clearfix">
             <h5><%= product.name %></h5>
-          <% end %>
-          <h3><%= product.display_price %></h3>
-        </div>
+            <h3><%= product.display_price %></h3>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
