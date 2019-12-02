@@ -5,6 +5,6 @@ class Potepan::CategoriesController < ApplicationController
 
     # 表示する商品情報の取得
     @taxon = Spree::Taxon.find(params[:id])
-    @products = @taxon.all_products.includes(master: [:default_price, :images])
+    @products = @taxon.all_products.includes(master: [:images, :default_price])
   end
 end

@@ -1,6 +1,6 @@
 <% provide(title: taxon.name) %>
 <div class="row">
-  <%= products.each do |product| %>
+  <% products.each do |product| %>
     <div class="col-sm-4 col-xs-12">
       <div class="productBox">
         <div class="productImage clearfix">
@@ -10,7 +10,7 @@
           <%= link_to potepan_product_path(product.id) do %>
             <h5><%= product.name %></h5>
           <% end %>
-          <h3><%= product.default_price %></h3>
+          <h3><%= product.display_price %></h3>
         </div>
       </div>
     </div>

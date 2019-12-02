@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Potepan::Products", type: :feature do
-  given!(:taxonomy) { create :taxonomy, name: 'Category' }
+  given!(:taxonomy) { create :taxonomy, name: 'Categories' }
   # taxonomyにtaxonを２つ作成
   given!(:taxon_1) { create :taxon, name: 'Bags', taxonomy: taxonomy, parent_id: taxonomy.root.id }
   given!(:taxon_2) { create :taxon, name: 'Mugs', taxonomy: taxonomy, parent_id: taxonomy.root.id }
