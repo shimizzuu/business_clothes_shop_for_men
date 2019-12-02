@@ -24,7 +24,14 @@ RSpec.feature "Potepan::Categories", type: :feature do
     end
   end
 
-  scenario "toggle動作確認" do
+  scenario "商品詳細ページにレンダリングされるか確認" do
+    within "#productsList" do
+      click_on product_1.name
+    end
+    expect(page).to have_selector 'h2', text: product_1.name.upcase
+  end
+
+  xscenario "toggle動作確認" do
     # toggleを展開していない場合
     expect(find('a[data-target="#category-0"]')["aria-expanded"]).to be_falsey
     # toggleを展開した場合
@@ -32,7 +39,7 @@ RSpec.feature "Potepan::Categories", type: :feature do
     expect(find('a[data-target="#category-0"]')["aria-expanded"]).to be_truthy
   end
 
-  scenario "taxon_1の商品一覧表示確認" do
+  xscenario "taxon_1の商品一覧表示確認" do
     within "#productsList" do
       taxon_1.products.each do |product|
         expect(page).to have_content product.name.upcase
@@ -43,14 +50,7 @@ RSpec.feature "Potepan::Categories", type: :feature do
     end
   end
 
-  scenario "商品詳細ページにレンダリングされるか確認" do
-    within "#productsList" do
-      click_on product_1.name
-    end
-    expect(page).to have_selector 'h2', text: product_1.name.upcase
-  end
-
-  scenario "taxon_2の商品一覧表示確認" do
+  xscenario "taxon_2の商品一覧表示確認" do
     within ".side-nav" do
       click_on taxonomy.name
       click_on taxon_2.name
