@@ -1,8 +1,8 @@
 require 'rails_helper'
-
 RSpec.describe Potepan::CategoriesController, type: :controller do
   describe 'GET #show' do
-    let(:taxon) { create(:taxon) }
+    let(:taxonomy) { create :taxonomy }
+    let(:taxon) { create :taxon, taxonomy: taxonomy, parent_id: taxonomy.root.id }
 
     before do
       get :show, params: { id: taxon.id }

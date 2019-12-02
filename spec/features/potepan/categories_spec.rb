@@ -1,11 +1,10 @@
 require 'rails_helper'
-
 RSpec.feature "Potepan::Categories", type: :feature do
-  given!(:taxonomy) { create :taxonomy, name: 'Categories' }
-  # taxonomyにtaxonを２つ作成
+  given!(:taxonomy) { create :taxonomy, name: 'Category' }
+
   given!(:taxon_1) { create :taxon, name: 'Bags', taxonomy: taxonomy, parent_id: taxonomy.root.id }
   given!(:taxon_2) { create :taxon, name: 'Mugs', taxonomy: taxonomy, parent_id: taxonomy.root.id }
-  # taxonにproductを２つ作成
+
   given!(:product_1) { create :product, taxons: [taxon_1] }
   given!(:product_2) { create :product, taxons: [taxon_1] }
   given!(:product_3) { create :product, taxons: [taxon_2] }
@@ -15,7 +14,7 @@ RSpec.feature "Potepan::Categories", type: :feature do
   end
 
   scenario "テンプレート表示確認" do
-    expect(page).to have_title "#{taxon_1.name}"
+    expect(page).to have_title taxon_1.name
     expect(page).to have_selector 'h2', text: taxon_1.name.upcase
   end
 
