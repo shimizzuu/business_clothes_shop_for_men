@@ -89,4 +89,3 @@ workflows:
           requires:
             - rspec
             - rubocop
-#
