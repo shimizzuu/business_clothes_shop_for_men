@@ -13,7 +13,7 @@
               <ul id="category-<%= i %>" class="collapse collapseItem">
                 <% category.root.leaves.each do |leaf| %>
                   <li>
-                    <%= link_to potepan_category_path(leaf.id), remote: true do %>
+                    <%= link_to potepan_category_path(leaf.id) do %>
                       <i class="fa fa-caret-right" aria-hidden="true"></i>
                       <%= leaf.name %>
                       <span><%= "(#{leaf.all_products.count})" %></span>
