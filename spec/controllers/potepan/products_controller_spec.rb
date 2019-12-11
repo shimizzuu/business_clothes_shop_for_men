@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe Potepan::ProductsController, type: :controller do
   describe 'GET #show' do
     let(:product) { create(:product) }
