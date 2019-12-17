@@ -12,7 +12,7 @@
             <%= image_tag related_product.display_image.attachment.url(:small) %>
           </div>
           <div class="productCaption clearfix">
-            <h5><%= related_product.name %></h5>
+            <h5><%= related_product.name.upcase %></h5>
             <h3><%= related_product.display_price %></h3>
           </div>
         <% end %>
