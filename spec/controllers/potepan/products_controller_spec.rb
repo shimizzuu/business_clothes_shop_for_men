@@ -1,14 +1,14 @@
 require 'rails_helper'
 RSpec.describe Potepan::ProductsController, type: :controller do
   describe 'GET #show' do
-    let(:product) { create(:product) }
+    let(:product_1) { create :product }
 
     before do
-      get :show, params: { id: product.id }
+      get :show, params: { id: product_1.id }
     end
 
     it "productが取得できていること" do
-      expect(assigns[:product]).to eq product
+      expect(assigns[:product]).to eq product_1
     end
 
     it "ステータスコード 200 OK確認" do
