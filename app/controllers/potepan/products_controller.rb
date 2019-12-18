@@ -1,5 +1,5 @@
 class Potepan::ProductsController < ApplicationController
-  RELATED_ITEMS_DISPLAYED = 4
+  MAX_RELATED_PRODUCTS_GET_FROM_DB = 4
 
   def show
     @product = Spree::Product.find(params[:id])
@@ -9,6 +9,6 @@ class Potepan::ProductsController < ApplicationController
       includes(master: [:images, :default_price]).
       where.not(id: @product.id).
       distinct.
-      limit(RELATED_ITEMS_DISPLAYED)
+      limit(MAX_RELATED_PRODUCTS_GET_FROM_DB)
   end
 end

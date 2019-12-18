@@ -1,4 +1,5 @@
 <% provide(:title, @product.name) %>
+<% provide(:related_products, @product.name) %>
 <%= render 'light_section' %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix">
@@ -67,6 +68,6 @@
         </div>
       </div>
     </div>
-    <%= render 'related_products' %>
+    <%= render partial: 'related_products', locals: { related_products: @related_products } %>
   </div>
 </section>
