@@ -22,6 +22,12 @@ RSpec.feature "Potepan::Products", type: :feature do
     end
   end
 
+  scenario "表示中の商品が関連商品に表示されていないこと" do
+    within '.row.productsContent' do
+      expect(page).to have_no_content product.name.upcase
+    end
+  end
+
   scenario "関連商品をクリックすると関連商品の商品詳細ページを表示" do
     within '.row.productsContent' do
       click_on(product_same_taxon.name.upcase)
@@ -29,7 +35,7 @@ RSpec.feature "Potepan::Products", type: :feature do
     expect(page).to have_selector 'h2', text: product_same_taxon.name.upcase
   end
 
-  scenario "関連商品の商品詳細ページで元商品が表示される" do
+  scenario "関連商品の商品詳細ページで元商品が表示されること" do
     visit potepan_product_path(id: product_same_taxon.id)
     expect(find('.row.productsContent')).to have_content product.name.upcase
   end
