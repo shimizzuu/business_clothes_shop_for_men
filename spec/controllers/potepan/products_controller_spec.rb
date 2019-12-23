@@ -14,6 +14,8 @@ RSpec.describe Potepan::ProductsController, type: :controller do
       get :show, params: { id: product.id }
     end
 
+    it{ expect(response.status).to eq 200 }
+
     it "productが取得できていること" do
       expect(assigns[:product]).to eq product
     end
@@ -22,11 +24,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
       expect(assigns[:images]).to eq product.images
     end
 
-    it "関連商品が取得できていること" do
-      expect(assigns[:related_products]).to include product_same_taxon_1
-    end
-
-    it "関連商品の取得個数が4つであること" do
+    it "1-4つ目の関連商品が取得されていて5つ目の関連商品が取得されていないこと" do
       expect(assigns[:related_products]).to include product_same_taxon_1
       expect(assigns[:related_products]).to include product_same_taxon_2
       expect(assigns[:related_products]).to include product_same_taxon_3
@@ -34,8 +32,8 @@ RSpec.describe Potepan::ProductsController, type: :controller do
       expect(assigns[:related_products]).not_to include product_same_taxon_5
     end
 
-    it "ステータスコード 200 OK確認" do
-      expect(response.status).to eq 200
+    it "関連商品の取得個数が4つであること" do
+      expect(assigns[:related_products].count).to eq 4
     end
 
     it "showページにリダイレクトされていること" do
