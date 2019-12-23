@@ -10,7 +10,7 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
       get :show, params: { id: taxon.id }
     end
 
-    it{ expect(response.status).to eq 200 }
+    it { expect(response.status).to eq 200 }
 
     it "カテゴリーページにリダイレクトされていること" do
       expect(response).to render_template :show
