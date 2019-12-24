@@ -3,7 +3,7 @@ RSpec.describe Potepan::ProductsController, type: :controller do
   describe 'GET #show' do
     let(:taxonomy_1) { create :taxonomy, name: 'Categories' }
     let(:taxon_1) { create :taxon, taxonomy: taxonomy_1, parent_id: taxonomy_1.root.id }
-    let!(:product) { create(:product, taxons: [taxon_1]) }
+    let(:product) { create(:product, taxons: [taxon_1]) }
     let!(:product_same_taxon) { create_list(:product, 5, taxons: [taxon_1]) }
 
     before do
