@@ -11,9 +11,16 @@ RSpec.feature "Potepan::Categories", type: :feature do
     visit potepan_category_path(id: taxon_1.id)
   end
 
-  scenario "テンプレート表示確認" do
+  scenario "タイトル表示/非表示確認" do
     expect(page).to have_title "#{taxon_1.name} - BIGBAG Store"
-    expect(page).to have_selector 'h2', text: taxon_1.name.upcase
+    expect(page).to have_content taxon_1.name.upcase
+    expect(page).to have_no_content taxon_2.name.upcase
+  end
+
+  scenario "商品名表示/非表示確認" do
+    expect(page).to have_content product_1.name
+    expect(page).to have_content product_2.name
+    expect(page).to have_no_content product_3.name
   end
 
   scenario "カテゴリーツリー表示確認" do
@@ -28,6 +35,6 @@ RSpec.feature "Potepan::Categories", type: :feature do
     within "#productsList" do
       click_on product_1.name
     end
-    expect(page).to have_selector 'h2', text: product_1.name.upcase
+    expect(page).to have_selector 'h2', text: product_1.name
   end
 end

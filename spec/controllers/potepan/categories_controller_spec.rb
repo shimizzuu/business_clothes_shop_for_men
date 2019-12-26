@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe Potepan::CategoriesController, type: :controller do
+RSpec.describe Potepan::CategoriesController, type: :request do
   describe 'GET #show' do
     let(:taxonomy) { create :taxonomy }
     let(:taxon) { create :taxon, taxonomy: taxonomy, parent_id: taxonomy.root.id }
@@ -7,29 +7,13 @@ RSpec.describe Potepan::CategoriesController, type: :controller do
     let(:other_product) { create :product }
 
     before do
-      get :show, params: { id: taxon.id }
+      get potepan_category_path(id: taxon.id)
     end
 
     it { expect(response.status).to eq 200 }
 
-    it "カテゴリーページにリダイレクトされていること" do
-      expect(response).to render_template :show
-    end
-
-    it 'assings @categories' do
-      expect(assigns(:categories)).to include taxonomy
-    end
-
-    it "assigns @taxon" do
-      expect(assigns(:taxon)).to eq taxon
-    end
-
-    it "assigns @products" do
-      expect(assigns(:products)).to include product
-    end
-
-    it '@productsはother_productを含まない' do
-      expect(assigns(:products)).not_to include other_product
+    it "カテゴリー名が表示されていること" do
+      expect(response.body).to include taxonomy.name
     end
   end
 end
