@@ -5,10 +5,10 @@ RSpec.feature "Potepan::Products", type: :feature do
   given(:taxon_1) { create :taxon, taxonomy: taxonomy_1, parent_id: taxonomy_1.root.id }
   given(:taxon_2) { create :taxon, taxonomy: taxonomy_1, parent_id: taxonomy_1.root.id }
   given(:taxon_3) { create :taxon, taxonomy: taxonomy_2, parent_id: taxonomy_2.root.id }
-  given(:product) { create(:product, taxons: [taxon_1]) }
+  given(:product) { create :product, taxons: [taxon_1] }
   given!(:product_same_taxon) { create_list(:product, 5, taxons: [taxon_1]) }
-  given!(:product_other_taxon) { create(:product, taxons: [taxon_2]) }
-  given!(:product_other_taxonomy) { create(:product, taxons: [taxon_3]) }
+  given!(:product_other_taxon) { create :product, taxons: [taxon_2] }
+  given!(:product_other_taxonomy) { create :product, taxons: [taxon_3] }
 
   background do
     visit potepan_product_path(id: product.id)
