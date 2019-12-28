@@ -11,31 +11,31 @@ RSpec.feature "Potepan::Products", type: :feature do
   given!(:product_other_taxonomy) { create :product, taxons: [taxon_3] }
 
   background do
-    visit potepan_product_path(id: product.id)
+    visit potepan_product_path(product.id)
   end
 
   scenario "関連商品の表示/非表示確認" do
     within '.row.productsContent' do
-      expect(page).to have_content product_same_taxon[0].name.upcase
-      expect(page).to have_content product_same_taxon[1].name.upcase
-      expect(page).to have_content product_same_taxon[2].name.upcase
-      expect(page).to have_content product_same_taxon[3].name.upcase
-      expect(page).to have_no_content product_same_taxon[4].name.upcase
-      expect(page).to have_no_content product_other_taxon.name.upcase
-      expect(page).to have_no_content product_other_taxonomy.name.upcase
+      expect(page).to have_content product_same_taxon[0].name
+      expect(page).to have_content product_same_taxon[1].name
+      expect(page).to have_content product_same_taxon[2].name
+      expect(page).to have_content product_same_taxon[3].name
+      expect(page).to have_no_content product_same_taxon[4].name
+      expect(page).to have_no_content product_other_taxon.name
+      expect(page).to have_no_content product_other_taxonomy.name
     end
   end
 
   scenario "表示中の商品が関連商品に表示されていないこと" do
     within '.row.productsContent' do
-      expect(page).to have_no_content product.name.upcase
+      expect(page).to have_no_content product.name
     end
   end
 
   scenario "関連商品をクリックすると関連商品の商品詳細ページを表示" do
     within '.row.productsContent' do
-      click_on(product_same_taxon[0].name.upcase)
+      click_on(product_same_taxon[0].name)
     end
-    expect(page).to have_selector 'h2', text: product_same_taxon[0].name.upcase
+    expect(page).to have_selector 'h2', text: product_same_taxon[0].name
   end
 end

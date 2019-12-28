@@ -7,7 +7,7 @@ RSpec.describe Potepan::CategoriesController, type: :request do
     let!(:other_product) { create :product }
 
     before do
-      get potepan_category_path(id: taxon.id)
+      get potepan_category_path(taxon.id)
     end
 
     it { expect(response.status).to eq 200 }
