@@ -15,7 +15,8 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
-    <%= render 'layouts/modals' %>
+    <%= render 'shared/login_modal' %>
+    <%= render 'shared/sign_up_modal' %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
