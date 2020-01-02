@@ -3,7 +3,6 @@ class Potepan::HomeController < ApplicationController
 
   def index
     @new_products = Spree::Product.
-      includes(master: [:images, :default_price]).
       where("available_on > ?", 1.month.ago).
       order(available_on: :desc).
       limit(MAXIMUM_NUMBER_OF_NEW_RELEASED_PRODUCTS)

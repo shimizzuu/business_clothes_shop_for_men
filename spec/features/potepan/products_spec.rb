@@ -34,7 +34,7 @@ RSpec.feature "Potepan::Products", type: :feature do
 
   scenario "関連商品をクリックすると関連商品の商品詳細ページを表示" do
     within '.row.productsContent' do
-      click_on(product_same_taxon[0].name)
+      click_on product_same_taxon[0].name
     end
     expect(page).to have_selector 'h2', text: product_same_taxon[0].name
   end
