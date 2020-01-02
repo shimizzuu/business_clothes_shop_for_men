@@ -64,7 +64,7 @@
         <div class="owl-carousel featuredProductsSlider">
           <% @new_products.each do |product| %>
             <div class="slide">
-              <%= link_to potepan_product_path(product) do %>
+              <%= link_to potepan_product_path(product.id) do %>
                 <div class="productImage clearfix">
                   <%= image_tag product.display_image.attachment.url, alt: product.name %>
                 </div>
