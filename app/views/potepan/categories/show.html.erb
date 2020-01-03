@@ -4,7 +4,7 @@
 <section class="mainContent clearfix productsContent">
   <div class="container">
     <div class="row">
-      <%= render 'left_sidebar', categories: @categories %>
+      <%= render 'left_sidebar', categories: @categories, colors: @colors, sizes: @sizes, taxon: @taxon %>
       <div class="col-md-9 col-sm-8 col-xs-12">
         <div class="row filterArea">
           <div class="col-xs-6">
@@ -24,7 +24,11 @@
           </div>
         </div>
         <div id="productsList">
-          <%= render 'products_list', products: @products %>
+          <% if @variants %>
+            <%= render 'variants_list', variants: @variants %>
+          <% else %>
+            <%= render 'products_list', products: @products %>
+          <% end %>
         </div>
       </div>
     </div>

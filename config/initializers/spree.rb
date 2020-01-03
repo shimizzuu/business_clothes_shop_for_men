@@ -82,7 +82,6 @@ Spree::Api::Config.configure do |config|
 end
 
 Spree.user_class = "Spree::LegacyUser"
-
 # If you want to add a field to the whitelisted ransackable attributes,
 # just uncomment the following code and change it as you need.
 #
