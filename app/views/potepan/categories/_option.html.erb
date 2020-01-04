@@ -1,0 +1,5 @@
+<li>
+  <%= link_to potepan_category_path(taxon.id, option_id: option.id) do %>
+    <%= option.name %><span>(<%= variants_count_on_option(option: option, taxon: taxon) %>)</span>
+  <% end %>
+</li>

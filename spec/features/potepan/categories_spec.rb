@@ -7,6 +7,20 @@ RSpec.feature "Potepan::Categories", type: :feature do
   given!(:product_same_taxon) { create :product, taxons: [taxon_1] }
   given!(:product_other_taxon) { create :product, taxons: [taxon_2] }
 
+  given!(:option_color) { create :option_type, presentation: "Color" }
+  given!(:red) { create :option_value, name: "Red", option_type: option_color }
+  given!(:blue) { create :option_value, name: "Blue", option_type: option_color }
+  given!(:products_red_variant) { create :variant, option_values: [red], product: product }
+  given!(:products_blue_variant) { create :variant, option_values: [blue], product: product }
+  given!(:other_products_red_variant) { create :variant, option_values: [red], product: product_other_taxon }
+
+  given!(:option_size) { create :option_type, presentation: "Size" }
+  given!(:large) { create :option_value, name: "Large", option_type: option_size }
+  given!(:medium) { create :option_value, name: "Medium", option_type: option_size }
+  given!(:products_L_variant) { create :variant, option_values: [large], product: product }
+  given!(:products_M_variant) { create :variant, option_values: [medium], product: product }
+  given!(:other_products_L_variant) { create :variant, option_values: [large], product: product_other_taxon }
+
   background do
     visit potepan_category_path(taxon_1.id)
   end
@@ -36,5 +50,17 @@ RSpec.feature "Potepan::Categories", type: :feature do
       click_on product.name
     end
     expect(page).to have_selector 'h2', text: product.name
+  end
+
+  scenario "カラー絞り込み表示確認" do
+    click_on "Red"
+    expect(page).to have_content products_red_variant.name
+    expect(page).to have_no_content other_products_red_variant.name
+  end
+
+  scenario "サイズ絞り込み表示確認" do
+    click_on "Large"
+    expect(page).to have_content products_L_variant.name
+    expect(page).to have_no_content other_products_L_variant.name
   end
 end
