@@ -33,7 +33,7 @@ RSpec.describe Spree::Product, type: :model do
             new_cheapest_product,
             newest_cheap_product,
             oldest_expensive_product,
-            old_most_expensive_product
+            old_most_expensive_product,
           ]
         end
       end
@@ -44,7 +44,7 @@ RSpec.describe Spree::Product, type: :model do
             old_most_expensive_product,
             oldest_expensive_product,
             newest_cheap_product,
-            new_cheapest_product
+            new_cheapest_product,
           ]
         end
       end
@@ -55,7 +55,7 @@ RSpec.describe Spree::Product, type: :model do
             newest_cheap_product,
             new_cheapest_product,
             old_most_expensive_product,
-            oldest_expensive_product
+            oldest_expensive_product,
           ]
         end
       end
@@ -66,7 +66,7 @@ RSpec.describe Spree::Product, type: :model do
             oldest_expensive_product,
             old_most_expensive_product,
             new_cheapest_product,
-            newest_cheap_product
+            newest_cheap_product,
           ]
         end
       end

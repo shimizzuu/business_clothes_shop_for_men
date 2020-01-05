@@ -13,7 +13,7 @@ RSpec.describe Spree::Variant, type: :model do
             new_cheapest_product.master,
             newest_cheap_product.master,
             oldest_expensive_product.master,
-            old_most_expensive_product.master
+            old_most_expensive_product.master,
           ]
         end
       end
@@ -24,7 +24,7 @@ RSpec.describe Spree::Variant, type: :model do
             old_most_expensive_product.master,
             oldest_expensive_product.master,
             newest_cheap_product.master,
-            new_cheapest_product.master
+            new_cheapest_product.master,
           ]
         end
       end
@@ -35,7 +35,7 @@ RSpec.describe Spree::Variant, type: :model do
             newest_cheap_product.master,
             new_cheapest_product.master,
             old_most_expensive_product.master,
-            oldest_expensive_product.master
+            oldest_expensive_product.master,
           ]
         end
       end
@@ -46,7 +46,7 @@ RSpec.describe Spree::Variant, type: :model do
             oldest_expensive_product.master,
             old_most_expensive_product.master,
             new_cheapest_product.master,
-            newest_cheap_product.master
+            newest_cheap_product.master,
           ]
         end
       end
