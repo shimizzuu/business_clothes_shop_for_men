@@ -7,16 +7,19 @@ class Potepan::CategoriesController < ApplicationController
     @sizes = Spree::OptionType.find_by(presentation: "Size").option_values
     # 商品取得
     @taxon = Spree::Taxon.find(params[:id])
-    @products = @taxon.all_products.includes(master: [:images, :default_price])
+    sort_type = params[:sort_type] || "new_to_old"
+    @products = Spree::Product.
+      on_taxon(@taxon).
+      with_price_and_images.
+      order_by(sort_type)
 
     # URLクエリ
     if params[:option_id]
       option_id = params[:option_id]
       @variants = Spree::Variant.
-        joins(:option_values).
-        includes(:product, :default_price, :images).
-        where(product_id: @products.ids).
-        where("spree_option_values.id": option_id)
+        on_products_with_option_id(@products, option_id).
+        with_price_and_images.
+        order_by(sort_type)
     end
 
     respond_to do |format|
