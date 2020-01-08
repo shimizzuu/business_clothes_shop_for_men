@@ -1,0 +1,8 @@
+<li>
+  <%= form_tag(search_potepan_products_path, method: :get, name: 'searchBox', enforce_utf8: false) do %>
+    <span class="input-group">
+      <%= text_field_tag :keywords, params[:keywords], class: "form-control", placeholder: "Search…", aria_describedby: "basic-addon2" %>
+      <span class="input-group-addon" id="serch-box" onclick="document.searchBox.submit()" style="cursor:pointer">検索</span>
+    </span>
+  <% end %>
+</li>
