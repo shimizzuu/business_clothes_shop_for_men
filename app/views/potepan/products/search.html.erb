@@ -1,0 +1,14 @@
+<% provide(:title, "result by search #{@keywords}") %>
+<section class="lightSection clearfix pageHeader">
+  <%= render 'light_section' %>
+</section>
+<section class="mainContent clearfix productsContent">
+  <div class="container">
+    <div class="row">
+      <%= render partial: 'potepan/products/product_for_search', collection: @products, as: :product %>
+      <% if @products.empty? %>
+        <h2 class="text-center">No results</h2>
+      <% end %>
+    </div>
+  </div>
+</section>

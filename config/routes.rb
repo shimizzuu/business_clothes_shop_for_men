@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     get :privacy_policy,            to: 'sample#privacy_policy'
 
     root 'home#index'
-    resources :products,            only: :show
-    resources :categories,          only: :show
+    resources :categories, only: :show
+    resources :products, only: :show do
+      collection do
+        get :search, to: 'products#search'
+      end
+    end
   end
 end

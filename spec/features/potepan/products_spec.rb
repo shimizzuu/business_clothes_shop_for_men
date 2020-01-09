@@ -9,6 +9,7 @@ RSpec.feature "Potepan::Products", type: :feature do
   given!(:product_same_taxon) { create_list(:product, 5, taxons: [taxon_1]) }
   given!(:product_other_taxon) { create :product, taxons: [taxon_2] }
   given!(:product_other_taxonomy) { create :product, taxons: [taxon_3] }
+  given!(:product_with_keyword) { create :product, name: "Ruby-T" }
 
   background do
     visit potepan_product_path(product.id)
@@ -37,5 +38,12 @@ RSpec.feature "Potepan::Products", type: :feature do
       click_on product_same_taxon[0].name
     end
     expect(page).to have_selector 'h2', text: product_same_taxon[0].name
+  end
+
+  scenario "ワード検索で正しい商品が検索できていること、空欄の場合はNo resultsと表示されること" do
+    visit search_potepan_products_path(keywords: "Ruby")
+    expect(page).to have_content("Ruby-T")
+    visit search_potepan_products_path(keywords: "")
+    expect(page).to have_content("No results")
   end
 end
