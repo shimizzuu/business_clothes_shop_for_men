@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe Potepan::ProductsController, type: :request do
-  describe 'GET #show' do
+  describe '#show' do
     let(:taxonomy) { create :taxonomy }
     let(:taxon) { create :taxon, taxonomy: taxonomy }
     let(:product) { create :product, taxons: [taxon] }
@@ -26,6 +26,27 @@ RSpec.describe Potepan::ProductsController, type: :request do
 
     it "「一覧ページへ戻る」のリンクが表示されていること" do
       expect(response.body).to include potepan_category_path(taxon.id)
+    end
+  end
+
+  describe '#search' do
+    let!(:product_with_in_name) { create :product, name: "Ruby-T" }
+    let!(:product_with_in_description) { create :product, name: "T-shirt", description: "Ruby" }
+    let!(:product_with_special_word_in_name) { create :product, name: "%Ruby%" }
+    let!(:product_without_keyword) { create :product, name: "PHP", description: "PHP" }
+
+    it "検索した商品が表示されていること" do
+      get search_potepan_products_path(keywords: 'Ruby')
+      expect(response.body).to include product_with_in_name.name
+      expect(response.body).to include product_with_in_description.name
+      expect(response.body).to include product_with_special_word_in_name.name
+      expect(response.body).not_to include product_without_keyword.name
+    end
+
+    it "検索対象でない商品が表示されないこと、No resultsが表示されること" do
+      get search_potepan_products_path(keywords: '')
+      expect(response.body).not_to include product_without_keyword.name
+      expect(response.body).to include "No results"
     end
   end
 end
