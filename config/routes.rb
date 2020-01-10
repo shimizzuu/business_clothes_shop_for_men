@@ -25,5 +25,6 @@ Rails.application.routes.draw do
         get :search, to: 'products#search'
       end
     end
+    get '/cart', to:'orders#edit'
   end
 end
