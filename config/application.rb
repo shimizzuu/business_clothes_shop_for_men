@@ -28,6 +28,8 @@ module Potepanec
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.i18n.fallbacks = [I18n.default_locale]
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
