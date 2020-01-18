@@ -64,6 +64,5 @@ module Potepanec
 
     config.i18n.default_locale = :ja
     config.i18n.fallbacks = [I18n.default_locale]
-    Money.locale_backend = :i18n
   end
 end
