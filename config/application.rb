@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Potepanec
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.2
     # Load application's model / class decorators
     initializer 'spree.decorators' do |app|
       config.to_prepare do
@@ -25,10 +27,6 @@ module Potepanec
         end
       end
     end
-    # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
-
-    config.i18n.fallbacks = [I18n.default_locale]
 
     config.to_prepare do
       # Load application's model / class decorators
@@ -63,5 +61,9 @@ module Potepanec
                        request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+
+    config.i18n.default_locale = :ja
+    config.i18n.fallbacks = [I18n.default_locale]
+    Money.locale_backend = :i18n
   end
 end
