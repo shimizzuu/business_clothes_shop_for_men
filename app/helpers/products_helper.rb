@@ -1,5 +1,3 @@
-require 'carmen'
-
 module ProductsHelper
   include Spree::ProductsHelper
 
