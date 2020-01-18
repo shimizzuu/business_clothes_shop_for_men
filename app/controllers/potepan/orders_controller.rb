@@ -5,7 +5,7 @@ class Potepan::OrdersController < ApplicationController
   # Adds a new item to the order (creating a new order if none already exists)
   def create
     @order = current_order(create_order_if_necessary: true)
-    variant  = Spree::Variant.find(params[:variant_id])
+    variant = Spree::Variant.find(params[:variant_id])
     quantity = params[:quantity].present? ? params[:quantity].to_i : 1
     # 2,147,483,647 is crazy. See issue https://github.com/spree/spree/issues/2695.
     if !quantity.between?(1, 2_147_483_647)
@@ -24,6 +24,7 @@ class Potepan::OrdersController < ApplicationController
       redirect_to potepan_cart_path
     end
   end
+
   # Shows the current incomplete order from the session
   def edit
     @order = Spree::Order.incomplete.find_or_initialize_by(
@@ -33,9 +34,10 @@ class Potepan::OrdersController < ApplicationController
 
   def update
     if @order.contents.update_cart(order_params)
-      @order.next if params.key?(:checkout) && @order.cart?
-      if params.key?(:checkout)
-        redirect_to potepan_checkout_state_path(@order.checkout_steps.first) and return
+      if params.key?(:checkout) && @order.cart?
+        @order.next
+      elsif params.key?(:checkout)
+        redirect_to potepan_checkout_state_path(@order.checkout_steps.first) && return
       end
     end
     redirect_to potepan_cart_path

@@ -8,8 +8,9 @@ class Potepan::LineItemsController < ApplicationController
   end
 
   private
-    def assign_order
-      @order = current_order
-      redirect_to(potepan_root_path) and return unless @order
-    end
+
+  def assign_order
+    @order = current_order
+    redirect_to(potepan_root_path) && return unless @order
+  end
 end
