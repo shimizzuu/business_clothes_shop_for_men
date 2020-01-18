@@ -20,10 +20,13 @@ Rails.application.routes.draw do
 
     root 'home#index'
     resources :categories, only: :show
+    resources :orders, only: [:show, :create, :edit, :update]
+    resources :line_items, only: :destroy
     resources :products, only: :show do
       collection do
         get :search, to: 'products#search'
       end
     end
+    get '/cart', to: 'orders#edit'
   end
 end

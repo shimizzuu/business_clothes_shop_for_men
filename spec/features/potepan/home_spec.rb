@@ -8,7 +8,7 @@ RSpec.feature "Potepan::Home", type: :feature do
   end
 
   scenario "新着商品の表示/非表示確認" do
-    expect(page).to have_no_content new_product[0].name
+    expect(page).to have_content new_product[0].name
     expect(page).to have_content new_product[1].name
     expect(page).to have_content new_product[2].name
     expect(page).to have_content new_product[3].name
@@ -16,7 +16,7 @@ RSpec.feature "Potepan::Home", type: :feature do
     expect(page).to have_content new_product[5].name
     expect(page).to have_content new_product[6].name
     expect(page).to have_content new_product[7].name
-    expect(page).to have_content new_product[8].name
+    expect(page).to have_no_content new_product[8].name
     expect(page).to have_no_content old_product.name
   end
 end

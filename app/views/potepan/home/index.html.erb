@@ -5,7 +5,7 @@
     <div class="fullscreenbanner">
       <ul>
         <li>
-          <%= image_tag("home/banner-slider/slider-bg.jpg", :alt => "slidebg1", data:{bgposition: "center center", bgfit: "cover" , bgrepeat: "no-repeat"}) %>
+          <%= image_tag("home/banner-slider/top_slider.jpg", :alt => "slidebg1", data:{bgposition: "center center", bgfit: "cover" , bgrepeat: "no-repeat"}) %>
         </li>
       </ul>
     </div>
@@ -23,33 +23,39 @@
       <div class="col-sm-4 col-xs-12">
         <div class="thumbnail" onclick="location.href='single_product.html';">
           <div class="imageWrapper">
-            <%= image_tag("home/featured-collection/featured-collection-01.jpg", :alt => "feature-collection-image") %>
-            <div class="masking"><a href="product_grid_left_sidebar.html" class="btn viewBtn">View Shirts</a></div>
+            <%= image_tag("home/featured-collection/suits.jpg", :alt => "feature-collection-image") %>
+            <div class="masking">
+              <%= link_to potepan_category_path(11), class: "btn viewBtn" do %>View Suits<% end %>
+            </div>
           </div>
           <div class="caption">
-            <h4>Shirts</h4>
+            <h4>Suits</h4>
           </div>
         </div>
       </div>
       <div class="col-sm-4 col-xs-12">
         <div class="thumbnail" onclick="location.href='single_product.html';">
           <div class="imageWrapper">
-            <%= image_tag("home/featured-collection/featured-collection-02.jpg", :alt => "feature-collection-image") %>
-            <div class="masking"><a href="product_grid_left_sidebar.html" class="btn viewBtn">View Bags</a></div>
+            <%= image_tag("home/featured-collection/shoes.jpg", :alt => "feature-collection-image") %>
+            <div class="masking">
+              <%= link_to potepan_category_path(13), class: "btn viewBtn" do %>View Shoes<% end %>
+            </div>
           </div>
           <div class="caption">
-            <h4>Bags</h4>
+            <h4>Shoes</h4>
           </div>
         </div>
       </div>
       <div class="col-sm-4 col-xs-12">
         <div class="thumbnail" onclick="location.href='single_product.html';">
           <div class="imageWrapper">
-            <%= image_tag("home/featured-collection/featured-collection-03.jpg", :alt => "feature-collection-image") %>
-            <div class="masking"><a href="product_grid_left_sidebar.html" class="btn viewBtn">View Denim</a></div>
+            <%= image_tag("home/featured-collection/tie.jpg", :alt => "feature-collection-image") %>
+            <div class="masking">">
+              <%= link_to potepan_category_path(14), class: "btn viewBtn" do %>View Tie<% end %>
+            </div>
           </div>
           <div class="caption">
-            <h4>Denim</h4>
+            <h4>Tie</h4>
           </div>
         </div>
       </div>
@@ -80,5 +86,4 @@
     </div>
   </div>
 </section>
-<%= render 'shared/light_section_for_partners_logos' %>
 <%= render 'product_quick_view_modal' %>

@@ -26,4 +26,9 @@ Spree::Variant.class_eval do
   def self.on_products_with_option_id(products, option_id)
     on_option_id(option_id).where(product_id: products.ids)
   end
+
+  def selectable_quantity
+    total = total_on_hand
+    total > 10 ? [*1..10] : [*1..total]
+  end
 end
