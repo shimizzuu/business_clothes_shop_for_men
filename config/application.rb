@@ -62,6 +62,6 @@ module Potepanec
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
-    config.i18n.fallbacks = [I18n.default_locale]
+    config.i18n.fallbacks = true
   end
 end
