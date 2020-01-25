@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         get :search, to: 'products#search'
       end
     end
+    get '/checkout/:state', to: 'checkout#edit', as: :checkout_state
+    patch '/checkout/update/:state', to: 'checkout#update', as: :update_checkout
     get '/cart', to: 'orders#edit'
   end
 end

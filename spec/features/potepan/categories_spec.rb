@@ -26,7 +26,7 @@ RSpec.feature "Potepan::Categories", type: :feature do
   end
 
   scenario "タイトル表示/非表示確認" do
-    expect(page).to have_title "#{taxon_1.name} - BIGBAG Store"
+    expect(page).to have_title "#{taxon_1.name} - Rugged Style"
     expect(page).to have_content taxon_1.name.upcase
     expect(page).to have_no_content taxon_2.name.upcase
   end

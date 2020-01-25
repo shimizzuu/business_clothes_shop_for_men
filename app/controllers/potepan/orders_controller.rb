@@ -18,7 +18,7 @@ class Potepan::OrdersController < ApplicationController
     end
     if @order.errors.any?
       flash[:error] = @order.errors.full_messages.join(", ")
-      redirect_back_or_default(spree.root_path)
+      redirect_back(fallback_location: potepan_root_path) and return
       return
     else
       redirect_to potepan_cart_path
@@ -36,8 +36,9 @@ class Potepan::OrdersController < ApplicationController
     if @order.contents.update_cart(order_params)
       if params.key?(:checkout) && @order.cart?
         @order.next
-      elsif params.key?(:checkout)
-        redirect_to potepan_checkout_state_path(@order.checkout_steps.first) && return
+      end
+      if params.key?(:checkout)
+        redirect_to potepan_checkout_state_path(@order.checkout_steps.first) and return
       end
     end
     redirect_to potepan_cart_path
@@ -61,7 +62,7 @@ class Potepan::OrdersController < ApplicationController
     @order = current_order
     unless @order
       flash[:error] = t('spree.order_not_found')
-      redirect_to(root_path) && return
+      redirect_to(root_path) and return
     end
   end
 end

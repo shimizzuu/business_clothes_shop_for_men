@@ -24,3 +24,5 @@ AllCops:
     - 'path/ruby'
     - 'spec/spec_helper.rb'
     - 'app/models/spree/*'
+    - 'app/controllers/potepan/checkout_controller.rb'
+    - 'app/controllers/potepan/orders_controller.rb'
