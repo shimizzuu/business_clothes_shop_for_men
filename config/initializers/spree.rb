@@ -5,7 +5,7 @@ Spree.config do |config|
   # Core:
 
   # Default currency for new sites
-  config.currency = "JPY"
+  config.currency = "USD"
 
   # from address for transactional emails
   config.mails_from = "store@example.com"
@@ -64,7 +64,7 @@ Spree.config do |config|
 end
 
 Spree::Frontend::Config.configure do |config|
-  config.locale = 'ja'
+  config.locale = 'en'
 end
 
 Spree::Backend::Config.configure do |config|
