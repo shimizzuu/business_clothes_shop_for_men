@@ -5,10 +5,13 @@ Spree.config do |config|
   # Core:
 
   # Default currency for new sites
-  config.currency = "USD"
+  config.currency = "JPY"
 
   # from address for transactional emails
   config.mails_from = "store@example.com"
+
+  # mailer
+  config.order_mailer_class = 'Potepan::OrderMailer'
 
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
@@ -61,7 +64,7 @@ Spree.config do |config|
 end
 
 Spree::Frontend::Config.configure do |config|
-  config.locale = 'en'
+  config.locale = 'ja'
 end
 
 Spree::Backend::Config.configure do |config|
@@ -81,7 +84,7 @@ Spree::Api::Config.configure do |config|
   config.requires_authentication = true
 end
 
-Spree.user_class = "Spree::LegacyUser"
+Spree.user_class = "Spree::User"
 
 # If you want to add a field to the whitelisted ransackable attributes,
 # just uncomment the following code and change it as you need.
