@@ -1,9 +1,9 @@
 <%= form_tag('/potepan/orders', method: "post", id: "product-form") do %>
   <span class="quick-drop variant">
-    種類<%= select_box_of_variant(product) %>
+    種類 <%= select_box_of_variant(product) %>
   </span>
   <span class="quick-drop resizeWidth" id="quantity-selectbox">
-    個数<%= select_tag :quantity, options_for_select([*1..3], 1), id: "manyItems" %>
+    個数 <%= select_tag :quantity, options_for_select([*1..3], 1), id: "manyItems" %>
   </span>
   <div class="btn-area">
     <%= button_tag class: "btn btn-primary btn-block", id: "btn-to-add-product" do %>
