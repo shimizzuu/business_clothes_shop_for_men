@@ -10,9 +10,6 @@ Spree.config do |config|
   # from address for transactional emails
   config.mails_from = "store@example.com"
 
-  # mailer
-  config.order_mailer_class = 'Potepan::OrderMailer'
-
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
 
@@ -84,7 +81,7 @@ Spree::Api::Config.configure do |config|
   config.requires_authentication = true
 end
 
-Spree.user_class = "Spree::User"
+Spree.user_class = "Spree::LegacyUser"
 
 # If you want to add a field to the whitelisted ransackable attributes,
 # just uncomment the following code and change it as you need.

@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe Potepan::HomeController, type: :request do
+RSpec.describe Potepan::Home, type: :request do
   describe 'GET /potepan' do
     let(:new_product) { create :product, available_on: Time.zone.now }
     let(:old_product) { create :product, available_on: 1.year.ago }

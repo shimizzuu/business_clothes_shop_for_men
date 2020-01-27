@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe Potepan::ProductsController, type: :request do
+RSpec.describe Potepan::Products, type: :request do
   describe '#show' do
     let(:taxonomy) { create :taxonomy }
     let(:taxon) { create :taxon, taxonomy: taxonomy }
